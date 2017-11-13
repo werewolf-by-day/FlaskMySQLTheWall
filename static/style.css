@@ -1,0 +1,10 @@
+#wrapper {
+  background: linear-gradient(grey, black, grey);
+}
+
+fieldset {
+  background-color: white;
+  width: 600px;
+  vertical-align: top;
+  display:inline-block;
+}

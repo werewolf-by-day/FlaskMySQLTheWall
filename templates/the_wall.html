@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to The Coding Dojo Wall</title>
+  </head>
+  <body>
+    <h2>Welcome, {{session["user_name"]}}!</h2>
+    <h3>Post a new message:</h3>
+    <form action="/messages" method="POST">
+	  <p>Message: <input type="text" name="message"></p>
+	  <input type="submit" name="">
+    </form>
+    <h3>All Messages</h3>
+    {% for message in messages %}
+	   <fieldset>
+		    <h4>{{message['first_name']}} {{message['last_name']}} - {{message['created_at']}}</h4>
+		    <p>{{message['message']}}</p>
+		    <h5>Create a new comment:</h5>
+		    <form action="/comments/{{message['id']}}" method="POST">
+        <p>Comment: <input type="text" name="comment"></p>
+        <input type="submit" name="">
+		    </form>
+		    {% for comment in message['comments'] %}
+			     <fieldset>
+             <h4>{{comment['first_name']}} {{comment['last_name']}} - {{comment['created_at']}}</h4>
+             <p>{{comment['comment']}}</p>
+			     </fieldset>
+		    {% endfor %}
+	   </fieldset>
+    {% endfor %}
+  </body>
+</html>
